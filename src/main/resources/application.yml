@@ -1,0 +1,54 @@
+server:
+  port: 8088
+  forward-headers-strategy: FRAMEWORK
+
+spring:
+  config:
+    import: classpath:env.properties
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_DATABASE}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: axmedovkamran127@gmail.com
+#    password: jfjlrkgmaokhjzrm
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+
+
+file:
+  upload-dir: 'uploads'
+
+multipart:
+  maxFileSize: 2Mb
+  maxRequestSize: 15Mb
+
+
+app:
+  base-url: https://furnirostore.up.railway.app
+
+
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 864000000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
